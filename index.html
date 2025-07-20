@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Teacher Dipali!</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            background: #0f0c29;
+            color: #fff;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Circuit Background */
+        .circuit-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, #0f0c29 21px, transparent 1%) center,
+                linear-gradient(#0f0c29 21px, transparent 1%) center,
+                #1a237e;
+            background-size: 22px 22px;
+            opacity: 0.7;
+            z-index: -2;
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            z-index: -1;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Styles */
+        header {
+            margin-bottom: 2rem;
+            animation: glow 2s infinite alternate;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #ff8a00, #e52e71, #00b4db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #ffeb3b;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tech Card */
+        .tech-card {
+            background: rgba(26, 35, 126, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 0 20px rgba(0, 180, 219, 0.5);
+            border: 1px solid #00b4db;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff8a00, #e52e71, #00b4db, #ffeb3b);
+            z-index: -1;
+            border-radius: 16px;
+            animation: borderGlow 3s linear infinite;
+            background-size: 400%;
+        }
+
+        .tech-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 35, 126, 0.7);
+            border-radius: 15px;
+            z-index: -1;
+        }
+
+        /* Message Styles */
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.8rem;
+            color: #ffeb3b;
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        .creator {
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            color: #00b4db;
+            margin-top: 2rem;
+            text-align: center;
+            border-top: 1px dashed #00b4db;
+            padding-top: 1rem;
+        }
+
+        /* Button Styles */
+        .btn {
+            background: linear-gradient(45deg, #e52e71, #ff8a00);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 1rem;
+            box-shadow: 0 4px 15px rgba(229, 46, 113, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(229, 46, 113, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff8a00, #e52e71);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 65px;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .balloon::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 50px;
+            background-color: #fff;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .balloon:nth-child(1) {
+            background-color: #e52e71;
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+
+        .balloon:nth-child(2) {
+            background-color: #00b4db;
+            left: 20%;
+            top: 30%;
+            animation-delay: 1s;
+        }
+
+        .balloon:nth-child(3) {
+            background-color: #ff8a00;
+            left: 30%;
+            top: 25%;
+            animation-delay: 2s;
+        }
+
+        .balloon:nth-child(4) {
+            background-color: #ffeb3b;
+            left: 70%;
+            top: 20%;
+            animation-delay: 0.5s;
+        }
+
+        .balloon:nth-child(5) {
+            background-color: #4caf50;
+            left: 80%;
+            top: 30%;
+            animation-delay: 1.5s;
+        }
+
+        .balloon:nth-child(6) {
+            background-color: #9c27b0;
+            left: 60%;
+            top: 25%;
+            animation-delay: 2.5s;
+        }
+
+        /* Binary Rain */
+        .binary-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.2;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* Tech Elements */
+        .tech-element {
+            position: absolute;
+            background: rgba(0, 180, 219, 0.3);
+            border: 1px solid #00b4db;
+            border-radius: 5px;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .tech-element:nth-child(1) {
+            width: 100px;
+            height: 10px;
+            top: 15%;
+            left: 5%;
+            transform: rotate(45deg);
+        }
+
+        .tech-element:nth-child(2) {
+            width: 80px;
+            height: 8px;
+            bottom: 20%;
+            right: 10%;
+            transform: rotate(-30deg);
+        }
+
+        .tech-element:nth-child(3) {
+            width: 60px;
+            height: 6px;
+            top: 70%;
+            left: 15%;
+            transform: rotate(15deg);
+        }
+
+        .tech-element:nth-child(4) {
+            width: 120px;
+            height: 12px;
+            top: 30%;
+            right: 5%;
+            transform: rotate(-15deg);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e52e71, 0 0 20px #e52e71;
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff8a00, 0 0 40px #ff8a00;
+            }
+        }
+
+        @keyframes borderGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes pulse {
+            from {
+                box-shadow: 0 0 5px rgba(0, 180, 219, 0.5);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(0, 180, 219, 0.8);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            .tech-card {
+                padding: 1.5rem;
+            }
+            
+            .message {
+                font-size: 1rem;
+            }
+            
+            .balloon {
+                width: 40px;
+                height: 55px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .tech-card {
+                padding: 1rem;
+            }
+            
+            .balloon {
+                width: 30px;
+                height: 45px;
+            }
+            
+            .balloon::before {
+                height: 30px;
+                bottom: -30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Circuit Background -->
+    <div class="circuit-bg"></div>
+    
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Binary Rain Effect -->
+    <canvas class="binary-rain"></canvas>
+    
+    <!-- Confetti Container -->
+    <div class="confetti" id="confetti"></div>
+    
+    <!-- Balloons -->
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    
+    <!-- Tech Elements -->
+    <div class="tech-element"></div>
+    <div class="tech-element"></div>
+    <div class="tech-element"></div>
+    <div class="tech-element"></div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <header>
+            <h1>Happy Birthday Teacher Dipali!</h1>
+            <h2>A Tech-Inspired Celebration</h2>
+        </header>
+        
+        <div class="tech-card">
+            <p class="message">
+                Dear Teacher Dipali,<br><br>
+                
+                On this special day, I wanted to create something unique to express my gratitude and wish you a very happy birthday! As your computer engineering student, I've combined my technical skills with heartfelt wishes to create this digital celebration just for you.<br><br>
+                
+                Your dedication to teaching and patience with all of us has been truly inspiring. You've not only taught us subjects but also important life lessons that we'll carry forever. Your enthusiasm in the classroom makes even the most complex topics enjoyable to learn.<br><br>
+                
+                Today, I celebrate you - an amazing teacher, mentor, and guide. May your year ahead be filled with joy, success, and good health. Keep inspiring generations of students with your knowledge and kindness!<br><br>
+                
+                Wishing you the happiest of birthdays!
+            </p>
+            
+            <p class="signature">Ahmed Sallu</p>
+            <p class="creator">Created with ❤️ by Ahmed Sallu</p>
+            
+            <button class="btn" id="musicBtn">Play Birthday Music</button>
+            <button class="btn" id="confettiBtn">Launch Confetti</button>
+        </div>
+    </div>
+    
+    <script>
+        // Binary Rain Effect
+        const binaryCanvas = document.querySelector('.binary-rain');
+        const ctx = binaryCanvas.getContext('2d');
+        
+        binaryCanvas.width = window.innerWidth;
+        binaryCanvas.height = window.innerHeight;
+        
+        const binaryChars = "01";
+        const fontSize = 16;
+        const columns = binaryCanvas.width / fontSize;
+        
+        const rainDrops = [];
+        for (let i = 0; i < columns; i++) {
+            rainDrops[i] = 1;
+        }
+        
+        function drawBinaryRain() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, binaryCanvas.width, binaryCanvas.height);
+            
+            ctx.fillStyle = '#00b4db';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = binaryChars.charAt(Math.floor(Math.random() * binaryChars.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > binaryCanvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        }
+        
+        // Confetti Effect
+        function launchConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            confettiContainer.innerHTML = '';
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.top = '-10px';
+                confetti.style.borderRadius = '50%';
+                confetti.style.opacity = '0.8';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                const animationDuration = Math.random() * 3 + 2;
+                confetti.style.animation = `fall ${animationDuration}s linear forwards`;
+                
+                confettiContainer.appendChild(confetti);
+                
+                // Create keyframes dynamically
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    @keyframes fall {
+                        to {
+                            transform: translateY(${window.innerHeight + 10}px) rotate(${Math.random() * 360}deg);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+        
+        // Birthday Music - Using your local MP3 file
+        const audio = new Audio('DipaliMadamBithday.mp3');
+        audio.loop = true;
+        
+        // Handle music button
+        document.getElementById('musicBtn').addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play().catch(e => {
+                    // If audio fails to play (common in some browsers due to autoplay policies)
+                    alert("Please interact with the page to play music. Click the button again.");
+                    // Set a flag so next click will work
+                    audio.play();
+                });
+                this.textContent = 'Pause Music';
+                launchConfetti();
+            } else {
+                audio.pause();
+                this.textContent = 'Play Birthday Music';
+            }
+        });
+        
+        document.getElementById('confettiBtn').addEventListener('click', launchConfetti);
+        
+        // Particle.js Background
+        function initParticles() {
+            const canvas = document.createElement('canvas');
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.zIndex = '-1';
+            canvas.style.pointerEvents = 'none';
+            document.body.appendChild(canvas);
+            
+            const particleCtx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const particles = [];
+            const particleCount = window.innerWidth * 0.1;
+            
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 1,
+                    speedX: Math.random() * 0.5 - 0.25,
+                    speedY: Math.random() * 0.5 - 0.25,
+                    color: `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.random() * 0.5 + 0.1}`
+                });
+            }
+            
+            function animateParticles() {
+                particleCtx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    
+                    particleCtx.beginPath();
+                    particleCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    particleCtx.fillStyle = p.color;
+                    particleCtx.fill();
+                    
+                    p.x += p.speedX;
+                    p.y += p.speedY;
+                    
+                    if (p.x > canvas.width + p.size) p.x = -p.size;
+                    if (p.x < -p.size) p.x = canvas.width + p.size;
+                    if (p.y > canvas.height + p.size) p.y = -p.size;
+                    if (p.y < -p.size) p.y = canvas.height + p.size;
+                }
+                
+                requestAnimationFrame(animateParticles);
+            }
+            
+            animateParticles();
+            
+            window.addEventListener('resize', function() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+        
+        // Initialize everything
+        window.onload = function() {
+            setInterval(drawBinaryRain, 50);
+            initParticles();
+            
+            // Small confetti burst on load
+            setTimeout(launchConfetti, 1000);
+        };
+        
+        // Responsive adjustments
+        window.addEventListener('resize', function() {
+            binaryCanvas.width = window.innerWidth;
+            binaryCanvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
